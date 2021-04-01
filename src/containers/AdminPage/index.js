@@ -1,30 +1,10 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useQuery } from '@apollo/client'
-import { setUserInfo, delAuthToken, delUserInfo, getUserInfo } from '../../utils/storage';
-import ME_QUERY from '../../queries/Me'
+import { delAuthToken, delUserInfo, getUserInfo } from '../../utils/storage';
 import client from '../../utils/api';
-import {APP_MANAGER, BET_MANAGER, BET_CONSUMER} from '../../utils/constants'
 
-function HomePage (props) {
+function AdminPage (props) {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
-  const { loading, error, data } = useQuery(ME_QUERY);
-
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error</p>;
-  if (data.me) {
-    setUserInfo(data.me);
-    for (const idx in data.me.groups) {
-      if ([BET_MANAGER, APP_MANAGER].includes(data.me.groups[idx].name)){
-        return <Redirect to='/admin'/>
-      }
-    }
-  } else {
-    delAuthToken();
-    delUserInfo();
-    client.resetStore();
-    return <Redirect to='/' />;
-  }
 
   if (redirectToReferrer === true) {
     return <Redirect to='/' />
@@ -35,6 +15,9 @@ function HomePage (props) {
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Bienvenido a J8Bet, {getUserInfo().username}
         </h2>
+        <p className="text-center">
+          La página de administración no está habilitada aún.
+        </p>
         <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={event => {
           delAuthToken();
           delUserInfo();
@@ -48,4 +31,4 @@ function HomePage (props) {
   );
 }
 
-export default HomePage;
+export default AdminPage;
