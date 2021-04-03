@@ -19,8 +19,8 @@ function App(props) {
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/login" render={() => (<LoginPage onLogged={handleOnLogged}/>)} />
-          <PrivateRoute exact path="/" component={HomePage} />
           <PrivateRoute exact path="/admin" component={AdminPage} />
         </Switch>
       </BrowserRouter>
