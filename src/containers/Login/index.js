@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useMutation } from '@apollo/client'
-import LOGIN_MUTATION from '../../mutations/Login'
+import LOGIN_MUTATION from './mutations';
 import { setAuthToken, getAuthToken } from '../../utils/storage';
 
 function Login (props) {

@@ -10,7 +10,11 @@ const ME_QUERY = gql`
         verified,
         secondaryEmail,
         groups{
-            name
+          edges{
+            node{
+              name
+            }
+          }
         }
       }
     }

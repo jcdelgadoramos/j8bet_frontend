@@ -9,6 +9,7 @@ function AdminPage (props) {
   if (redirectToReferrer === true) {
     return <Redirect to='/' />
   }
+
   return (
     <div className="min-h-screen flex items-center justify-center
       bg-pink-600 py-12 px-4 sm:px-6 lg:px-8">
@@ -24,13 +25,14 @@ function AdminPage (props) {
           justify-center py-2 px-4 border border-transparent text-sm font-medium
           rounded-md text-gray-200 bg-cyan-800 hover:bg-gray-200
           hover:text-cyan-800 hover:border-8 hover:border-cyan-800
-          focus:ring-cyan-800 focus:border-cyan-800 focus:z-10
-          " onClick={event => {
-          delAuthToken();
-          delUserInfo();
-          client.resetStore();
-          setRedirectToReferrer(true);
-        }}>
+          focus:ring-cyan-800 focus:border-cyan-800 focus:z-10"
+          onClick={event => {
+            delAuthToken();
+            delUserInfo();
+            client.resetStore();
+            setRedirectToReferrer(true);
+          }}
+        >
           Salir
         </button>
       </div>
