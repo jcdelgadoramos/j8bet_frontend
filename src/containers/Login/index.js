@@ -14,6 +14,7 @@ function Login (props) {
     onCompleted: (data) => {
       if (data.tokenAuth.errors) {
         setError(true);
+        setRedirectToReferrer(false);
       } else {
         setAuthToken(data.tokenAuth.token);
         setError(false);
@@ -24,6 +25,7 @@ function Login (props) {
     onError: (error) => {
       console.log(error);
       setError(true);
+      setRedirectToReferrer(false);
     },
   });
   

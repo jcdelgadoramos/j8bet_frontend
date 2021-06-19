@@ -17,7 +17,7 @@ function Profile(props) {
       <button type="submit" className="
         w-full py-2 px-4 border
         border-transparent text-sm font-medium rounded-md text-white
-        hover:text-cyan-800 bg-cyan-800 duration-500 hover:border-cyan-800
+        hover:text-cyan-800 bg-cyan-800 hover:border-cyan-800
         hover:border-8 hover:bg-gray-200 focus:outline-none focus:ring-2
         focus:ring-offset-2 focus:ring-indigo-500"
         onClick={event => {

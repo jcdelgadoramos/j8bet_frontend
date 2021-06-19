@@ -7,6 +7,30 @@ import {APP_MANAGER, BET_MANAGER} from '../../utils/constants';
 import { setUserInfo, delAuthToken, delUserInfo } from '../../utils/storage';
 import Profile from '../Profile';
 
+function renderProfile(data) {
+  if (data.me) {
+    return <Profile />
+  } else {
+    return (
+      <div className="text-right text-sm text-gray-200 px-3 py-2">
+        <Link to="/login" onClick={() => {
+          delAuthToken();
+          delUserInfo();
+          client.resetStore();
+        }} className="
+          py-2 px-4 border
+          border-transparent text-sm font-medium rounded-md text-gray-200
+          hover:text-cyan-800 bg-cyan-800 hover:border-cyan-800
+          hover:border-8 hover:bg-gray-200 focus:outline-none focus:ring-2
+          focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Ingresar
+        </Link>
+      </div>
+    )
+  }
+}
+
 function Header(props) {
   const { loading, error, data } = useQuery(ME_QUERY);
 
@@ -22,27 +46,12 @@ function Header(props) {
         return <Redirect to='/admin'/>
       }
     }
-    return (
-      <div className="flex flex-col sm:flex-row items-center justify-between bg-coolGray-900 p-2 rounded-md">
-        <div className="flex flex-col justify-between items-left px-3 py-2">
-          <h1 className="text-center text-5xl  text-gray-200 bg-cyan-800">
-            J8Bet
-          </h1>
-          <p className="text-center text-lg  text-gray-200">
-            Apuéstale al mundo 
-          </p>
-        </div>
-        <Profile />
-      </div>
-    )
-  } else {
-    delAuthToken();
-    delUserInfo();
-    client.resetStore();
   }
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between rounded-md bg-coolGray-900 p-2">
+    <div className="flex flex-col sm:flex-row items-center justify-between
+      bg-coolGray-900 p-2 rounded-md"
+    >
       <div className="flex flex-col justify-between items-left px-3 py-2">
         <h1 className="text-center text-5xl  text-gray-200 bg-cyan-800">
           J8Bet
@@ -51,21 +60,7 @@ function Header(props) {
           Apuéstale al mundo 
         </p>
       </div>
-      <div className="text-right text-sm text-gray-200 px-3 py-2">
-        <Link to="/login" onClick={() => {
-          delAuthToken();
-          delUserInfo();
-          client.resetStore();
-        }} className="
-          py-2 px-4 border
-          border-transparent text-sm font-medium rounded-md text-gray-200
-          hover:text-cyan-800 bg-cyan-800 duration-500 hover:border-cyan-800
-          hover:border-8 hover:bg-gray-200 focus:outline-none focus:ring-2
-          focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Ingresar
-        </Link>
-      </div>
+      {renderProfile(data)}
     </div>
   )
 };
