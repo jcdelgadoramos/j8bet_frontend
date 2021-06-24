@@ -7,22 +7,19 @@ function Dashboard(props) {
     const { loading, error, data } = useQuery(DASHBOARD_QUERY);
 
     if (loading) return (
-        <div className="w-full text-center items-center justify-between 
-            bg-coolGray-900 p-2"
-        >
-            <p className="text-gray-200">Cargando...</p>
-        </div>
+        <div className="w-full items-center justify-between p-2 
+            text-center bg-coolGray-900 text-gray-200"
+        >Cargando...</div>
     );
     if (error) return (
-        <div className="w-full text-center items-center justify-between
-            bg-coolGray-900 p-2"
-        >
-            <p className="text-lg text-pink-600">Error</p>
-        </div>
+        <div className="w-full items-center justify-between p-2
+            text-center text-lg bg-coolGray-900 text-pink-600"
+        >Error</div>
     );
     if (data) {
         return (
-            <div className="w-full flex flex-wrap bg-coolGray-900 p-2 rounded-xl"
+            <div className="flex flex-wrap w-full rounded-md p-2 text-sm
+                bg-coolGray-900"
             >
                 {
                     data.affairs.edges.map((affair) => (

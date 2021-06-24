@@ -11,14 +11,15 @@ function AdminPage (props) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center
-      bg-pink-600 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-coolGray-900
-        px-8 py-8 rounded-2xl">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-200">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4
+      bg-pink-600">
+      <div className="max-w-md w-full space-y-8 px-8 py-8 rounded-2xl
+        text-center text-gray-200 bg-coolGray-900
+        ">
+        <h2 className="mt-6 text-3xl font-extrabold">
           Bienvenido a J8Bet, {getUserInfo().username}
         </h2>
-        <p className="text-center text-gray-600">
+        <p>
           La página de administración no está habilitada aún.
         </p>
         <button type="submit" className="group relative w-full flex

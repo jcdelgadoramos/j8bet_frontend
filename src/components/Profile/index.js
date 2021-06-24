@@ -11,15 +11,11 @@ function Profile(props) {
   }
 
   return (
-    <div className="text-center sm:text-right text-sm text-gray-200 px-3 py-2">
+    <div className="px-3 py-2 text-center sm:text-right text-sm">
       <h3>Bienvenido, {getUserInfo().username}</h3>
       <p>Saldo: S/. 45.00</p>
-      <button type="submit" className="
-        w-full py-2 px-4 border
-        border-transparent text-sm font-medium rounded-md text-white
-        hover:text-cyan-800 bg-cyan-800 hover:border-cyan-800
-        hover:border-8 hover:bg-gray-200 focus:outline-none focus:ring-2
-        focus:ring-offset-2 focus:ring-indigo-500"
+      <button type="submit" className="w-full rounded-md py-2 px-4 font-medium
+        bg-cyan-800 hover:text-cyan-800 hover:bg-gray-200"
         onClick={event => {
           delAuthToken();
           delUserInfo();

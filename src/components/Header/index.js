@@ -12,17 +12,13 @@ function renderProfile(data) {
     return <Profile />
   } else {
     return (
-      <div className="text-right text-sm text-gray-200 px-3 py-2">
+      <div className="px-3 py-2 text-right text-sm">
         <Link to="/login" onClick={() => {
           delAuthToken();
           delUserInfo();
           client.resetStore();
-        }} className="
-          py-2 px-4 border
-          border-transparent text-sm font-medium rounded-md text-gray-200
-          hover:text-cyan-800 bg-cyan-800 hover:border-cyan-800
-          hover:border-8 hover:bg-gray-200 focus:outline-none focus:ring-2
-          focus:ring-offset-2 focus:ring-indigo-500"
+        }} className="rounded-md py-2 px-4
+          bg-cyan-800 hover:text-cyan-800 hover:bg-gray-200"
         >
           Ingresar
         </Link>
@@ -49,14 +45,14 @@ function Header(props) {
   }
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between
-      bg-coolGray-900 p-2 rounded-md"
+    <div className="flex flex-col sm:flex-row rounded-md items-center p-2
+      justify-between text-center text-gray-200 bg-coolGray-900"
     >
       <div className="flex flex-col justify-between items-left px-3 py-2">
-        <h1 className="text-center text-5xl  text-gray-200 bg-cyan-800">
+        <h1 className="text-5xl bg-cyan-800">
           J8Bet
         </h1>
-        <p className="text-center text-lg  text-gray-200">
+        <p className="text-lg">
           Apuéstale al mundo 
         </p>
       </div>
