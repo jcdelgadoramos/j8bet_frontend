@@ -6,7 +6,7 @@ function DashboardEntry(props) {
     const [modalOpen, setModalOpen] = useState(false);
     const [clicked, setClicked] = useState(false);
 
-    function titleClicked(event) {
+    function changeVisibility() {
         setModalOpen(!modalOpen);
         setClicked(!clicked);
     };
@@ -18,7 +18,7 @@ function DashboardEntry(props) {
                 ${clicked ?
                     "text-cyan-800 bg-gray-200" : "text-gray-200 bg-cyan-800"} 
                 `}
-                onClick={ e => titleClicked(e) }
+                onClick={() => changeVisibility()}
             >
                 {affair.description}
             </div>
@@ -29,16 +29,20 @@ function DashboardEntry(props) {
                     ></DashboardAlternative>
                 ))
             }
-            <div id={affair.id+"Modal"}
-                className={`${modalOpen ? "" : "hidden" } absolute
-                top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-                w-3/4 sm:w-3/5 md:w-3/5 mx-auto rounded-md 
-                bg-coolGray-900 text-gray-200 border-gray-200"`}
-            >
-              <div className="m-2 p-2 rounded-md bg-cyan-800">
-                <span class="close">&times;</span>
-                <p>Some text in the Modal..</p>
-              </div>
+            <div id={affair.id+"Modal"} className={`${modalOpen ? "" : "hidden"}
+                absolute w-screen h-screen top-0 left-0 z-10 filter blur`}
+                onClick={() => changeVisibility()}>
+                <div 
+                    className="absolute top-1/2 left-1/2 transform
+                    -translate-x-1/2 -translate-y-1/2
+                    w-3/4 sm:w-3/5 md:w-3/5 mx-auto rounded-md 
+                    bg-coolGray-900 text-gray-200 border-gray-200"
+                >
+                  <div className="m-2 p-2 rounded-md bg-cyan-800">
+                    <h1>{affair.description}</h1>
+                    <p>{affair.rules}</p>
+                  </div>
+                </div>
             </div>
         </div>
 	)
